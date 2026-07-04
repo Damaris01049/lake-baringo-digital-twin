@@ -9,17 +9,16 @@ import TimeSlider from "./TimeSlider";
 export default function MapWorkspace() {
   return (
     <div className="relative h-full w-full">
-
       {/* Map */}
       <MapCanvas />
 
       {/* Top Toolbar */}
-      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-[1000]">
+      <div className="absolute left-4 top-4 z-[1000]">
         <Toolbar />
       </div>
 
       {/* Legend */}
-      <div className="absolute right-4 top-24 z-[1000]">
+      <div className="absolute right-4 top-4 z-[1000]">
         <Legend />
       </div>
 
@@ -29,10 +28,9 @@ export default function MapWorkspace() {
       </div>
 
       {/* Timeline */}
-      <div className="absolute bottom-0 left-0 w-full z-[1000]">
+      <div className="absolute bottom-4 left-1/2 z-[1000] w-[min(90%,32rem)] -translate-x-1/2 overflow-hidden rounded-lg shadow-lg">
         <TimeSlider />
       </div>
-
     </div>
   );
 }

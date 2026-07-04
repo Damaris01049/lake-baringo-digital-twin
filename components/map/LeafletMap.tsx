@@ -8,11 +8,17 @@ import { mapConfig } from "@/config/map";
 import { useMap } from "@/lib/map-context";
 import { basemaps } from "./basemaps/basemaps";
 
+import MapController from "./MapController";
+import MeasureTool from "./MeasureTool";
 import LakeMarker from "./LakeMarker";
 import LakeBoundary from "./layers/LakeBoundary";
+import RoadsLayer from "./layers/RoadsLayer";
+import HealthLayer from "./layers/HealthLayer";
+import SchoolsLayer from "./layers/SchoolsLayer";
+import FloodLayer from "./layers/FloodLayer";
 
 export default function LeafletMap() {
-  const { basemap } = useMap();
+  const { basemap, measuring } = useMap();
 
   const currentBasemap = basemaps[basemap];
 
@@ -23,7 +29,7 @@ export default function LeafletMap() {
       minZoom={mapConfig.minZoom}
       maxZoom={mapConfig.maxZoom}
       scrollWheelZoom={true}
-      className="h-full w-full"
+      className={`h-full w-full ${measuring ? "cursor-crosshair" : ""}`}
     >
       {/* Basemap */}
       <TileLayer
@@ -31,22 +37,21 @@ export default function LeafletMap() {
         attribution={currentBasemap.attribution}
       />
 
+      {/* Event + navigation bridge */}
+      <MapController />
+
       {/* Study Area Marker */}
       <LakeMarker />
 
-      {/* Lake Boundary */}
+      {/* GIS Layers */}
       <LakeBoundary />
+      <RoadsLayer />
+      <HealthLayer />
+      <SchoolsLayer />
+      <FloodLayer />
 
-      {/* Future GIS Layers */}
-
-      {/* Roads */}
-      {/* Schools */}
-      {/* Health Facilities */}
-      {/* Flood Extent */}
-      {/* Satellite Imagery */}
-      {/* Drone Orthomosaic */}
-      {/* Administrative Boundaries */}
-
+      {/* Measurement overlay */}
+      <MeasureTool />
     </MapContainer>
   );
 }

@@ -4,7 +4,10 @@ import { GeoJSON } from "react-leaflet";
 import { useEffect, useState } from "react";
 import type { GeoJsonObject } from "geojson";
 
+import { useMap } from "@/lib/map-context";
+
 export default function LakeBoundary() {
+  const { layers } = useMap();
   const [data, setData] = useState<GeoJsonObject | null>(null);
 
   useEffect(() => {
@@ -14,10 +17,11 @@ export default function LakeBoundary() {
       .catch(console.error);
   }, []);
 
-  if (!data) return null;
+  if (!layers.lakeBoundary || !data) return null;
 
   return (
     <GeoJSON
+      key="lake-boundary"
       data={data}
       style={{
         color: "#2563eb",
