@@ -3,13 +3,13 @@ import Sidebar from "@/components/layout/Sidebar";
 import RightPanel from "@/components/layout/RightPanel";
 import BottomBar from "@/components/layout/BottomBar";
 
-import MapCanvas from "@/components/map/MapCanvas";
+import MapWorkspace from "@/components/map/MapWorkspace";
 
 export default function MapPage() {
   return (
     <AppShell
       left={<Sidebar />}
-      center={<MapCanvas />}
+      center={<MapWorkspace />}
       right={<RightPanel />}
       bottom={<BottomBar />}
     />

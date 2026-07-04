@@ -12,30 +12,30 @@ export default function AppShell({
   bottom,
 }: AppShellProps) {
   return (
-    <div className="flex flex-1 flex-col overflow-hidden">
+    <div className="flex h-[calc(100vh-80px)] flex-col">
 
-      {/* Main Content */}
-      <div className="grid flex-1 grid-cols-[300px_minmax(0,1fr)_350px] overflow-hidden">
+      {/* Main Workspace */}
+      <div className="flex flex-1 overflow-hidden">
 
         {/* Left Sidebar */}
-        <aside className="overflow-y-auto border-r bg-white">
+        <aside className="w-72 shrink-0 overflow-y-auto border-r bg-white">
           {left}
         </aside>
 
-        {/* Map */}
-        <main className="relative h-full overflow-hidden">
+        {/* Map Workspace */}
+        <main className="relative min-w-0 flex-1 overflow-hidden bg-gray-100">
           {center}
         </main>
 
         {/* Right Panel */}
-        <aside className="overflow-y-auto border-l bg-gray-50">
+        <aside className="w-80 shrink-0 overflow-y-auto border-l bg-gray-50">
           {right}
         </aside>
 
       </div>
 
-      {/* Bottom Panel */}
-      <footer className="h-16 border-t bg-white">
+      {/* Bottom Workspace */}
+      <footer className="h-40 shrink-0 border-t bg-white">
         {bottom}
       </footer>
 

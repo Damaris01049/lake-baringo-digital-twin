@@ -4,14 +4,12 @@ import dynamic from "next/dynamic";
 
 const LeafletMap = dynamic(
   () => import("./LeafletMap"),
-  {
-    ssr: false,
-  }
+  { ssr: false }
 );
 
 export default function MapCanvas() {
   return (
-    <div className="h-full w-full">
+    <div className="absolute inset-0">
       <LeafletMap />
     </div>
   );
