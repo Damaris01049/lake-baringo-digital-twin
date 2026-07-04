@@ -7,24 +7,16 @@ import AIButton from "./AIButton";
 
 export default function Toolbar() {
   return (
-    <div className="flex items-center justify-between border-b bg-gray-50 px-4 py-3">
+    <div className="flex items-center gap-2 rounded-lg border bg-white/95 p-2 shadow-lg backdrop-blur">
+      <SearchButton />
+      <BasemapButton />
+      <MeasureButton />
+      <TimelineButton />
+      <ExportButton />
 
-      <div className="flex flex-wrap gap-2">
-
-        <SearchButton />
-
-        <BasemapButton />
-
-        <MeasureButton />
-
-        <TimelineButton />
-
-        <ExportButton />
-
-      </div>
+      <div className="mx-1 h-6 w-px bg-gray-200" aria-hidden="true" />
 
       <AIButton />
-
     </div>
   );
 }

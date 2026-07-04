@@ -1,26 +1,38 @@
 "use client";
 
+import { useMap } from "@/lib/map-context";
+import { LAYER_META } from "@/config/layers";
+
 export default function Legend() {
+  const { layers } = useMap();
+
+  const visible = LAYER_META.filter((l) => layers[l.id]);
+
   return (
-    <div className="rounded-lg bg-white p-4 shadow-lg">
-      <h3 className="mb-2 font-semibold">Legend</h3>
+    <div className="w-48 rounded-lg bg-white/95 p-4 shadow-lg backdrop-blur">
+      <h3 className="mb-2 text-sm font-semibold">Legend</h3>
 
-      <div className="space-y-2 text-sm">
-        <div className="flex items-center gap-2">
-          <div className="h-3 w-3 rounded-full bg-blue-600"></div>
-          <span>Lake Boundary</span>
+      {visible.length === 0 ? (
+        <p className="text-xs text-gray-500">No layers enabled</p>
+      ) : (
+        <div className="space-y-2 text-sm">
+          {visible.map((layer) => (
+            <div key={layer.id} className="flex items-center gap-2">
+              <span
+                className="inline-block shrink-0"
+                style={{
+                  backgroundColor: layer.color,
+                  width: layer.shape === "line" ? "1rem" : "0.75rem",
+                  height: layer.shape === "line" ? "0.2rem" : "0.75rem",
+                  borderRadius: layer.shape === "dot" ? "9999px" : "0.125rem",
+                }}
+                aria-hidden="true"
+              />
+              <span className="text-xs">{layer.label}</span>
+            </div>
+          ))}
         </div>
-
-        <div className="flex items-center gap-2">
-          <div className="h-3 w-3 bg-green-600"></div>
-          <span>Roads</span>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <div className="h-3 w-3 bg-red-600"></div>
-          <span>Health Facilities</span>
-        </div>
-      </div>
+      )}
     </div>
   );
 }

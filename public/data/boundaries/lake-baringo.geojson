@@ -1,4 +1,39 @@
 {
   "type": "FeatureCollection",
-  "features": []
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lake Baringo",
+        "note": "Approximate outline for visualization. Replace with authoritative hydrography data."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [36.017, 0.716],
+            [36.041, 0.723],
+            [36.063, 0.708],
+            [36.077, 0.686],
+            [36.088, 0.663],
+            [36.092, 0.638],
+            [36.089, 0.612],
+            [36.081, 0.589],
+            [36.07, 0.57],
+            [36.058, 0.556],
+            [36.043, 0.548],
+            [36.028, 0.552],
+            [36.017, 0.566],
+            [36.011, 0.586],
+            [36.008, 0.61],
+            [36.004, 0.634],
+            [36.0, 0.658],
+            [36.001, 0.682],
+            [36.008, 0.703],
+            [36.017, 0.716]
+          ]
+        ]
+      }
+    }
+  ]
 }
